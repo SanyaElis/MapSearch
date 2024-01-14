@@ -3,15 +3,15 @@ package ru.cs.vsu.eliseev.OSMReader.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ElementOnMap {
-        private long id;
-        private String user;
-        private long uid;
-        private boolean visible;
-        private String timestamp;
-        private long changeset;
-        private int version;
-        private Map<String, String> tags;
+public abstract class ElementOnMap {
+        protected long id;
+        protected String user;
+        protected long uid;
+        protected boolean visible;
+        protected String timestamp;
+        protected long changeset;
+        protected int version;
+        protected Map<String, String> tags;
 
         public ElementOnMap(long id) {
                 this.id = id;
@@ -20,9 +20,7 @@ public class ElementOnMap {
                 tags = new HashMap<>();
         }
 
-        public long getId() {
-                return id;
-        }
+        public abstract String getId();
 
         public String getUser() {
                 return user;

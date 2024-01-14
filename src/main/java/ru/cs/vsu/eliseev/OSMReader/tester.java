@@ -1,5 +1,6 @@
 package ru.cs.vsu.eliseev.OSMReader;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.xml.sax.SAXException;
 import ru.cs.vsu.eliseev.OSMReader.controller.OSMParser;
 import ru.cs.vsu.eliseev.OSMReader.model.ElementOnMap;
@@ -14,7 +15,12 @@ public class tester {
         OSMParser osmParser = new OSMParser();
         Map<String, ElementOnMap> result =  osmParser.parse(new File("src/main/java/ru/cs/vsu/eliseev/OSMReader/osmdata/test.osm"));
         System.out.println("Hello. world!");
-        System.out.println(result);
+        ObjectMapper objectMapper = new ObjectMapper();
+        for ( Map.Entry<String, ElementOnMap> entry : result.entrySet() ) {
+            String key = entry.getKey();
+            ElementOnMap value = entry.getValue();
+            System.out.println(objectMapper.writeValueAsString(value));
+        }
 
     }
 }
